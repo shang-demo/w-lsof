@@ -1,0 +1,16 @@
+{
+  "name": "w-lsof",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "bin": {
+    "lsof": ".bin/lsof.mjs"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "zx": "^1.14.1"
+  }
+}
