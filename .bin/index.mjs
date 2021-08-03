@@ -5,6 +5,7 @@ import { createRequire } from "module";
 import os from "os";
 import { dirname, resolve } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
+import which from "which";
 import { $, cd, chalk, fetch, question, sleep } from "zx";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -103,8 +104,8 @@ $.toString2 = async (...args) => {
 };
 
 // cmd
-$.switch2cmd = () => {
-  $.shell = "C:\\WINDOWS\\system32\\cmd.exe";
+const switch2cmd = async () => {
+  $.shell = await which("cmd.exe");
   $.prefix = "";
 };
 
@@ -118,6 +119,8 @@ Object.assign(global, {
   sleep,
   fs,
   os,
+
+  switch2cmd,
 
   SHELL_DIR: process.cwd(),
   CI_DIR: resolve(__dirname, "../"),

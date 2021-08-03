@@ -1,4 +1,4 @@
-$.switch2cmd();
+await switch2cmd();
 
 let [option] = process.argv.slice(2);
 option = (option ?? "").trim();
