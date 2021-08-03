@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.mjs",
   "bin": {
-    "lsof": ".bin/lsof.mjs"
+    "lsof": ".bin/index.mjs"
   },
   "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "zx": "^1.14.1"
+    "zx": "^2.0.0"
   }
 }

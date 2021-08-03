@@ -1,3 +1,5 @@
+$.switch2cmd();
+
 let [option] = process.argv.slice(2);
 option = (option ?? "").trim();
 
@@ -15,11 +17,10 @@ lsof -p:pid       查询进程ID为pid的进程
 let pidList = [];
 if (portReg.test(option)) {
   const inputPort = option.trim().replace(portReg, "");
-  const pidResult = await $$`netstat -aon | findstr :${inputPort}`.catch(
-    (e) => {
+  const pidResult =
+    await $.toString2`netstat -aon | findstr :${inputPort}`.catch((e) => {
       return "";
-    }
-  );
+    });
 
   pidList = Array.from(
     new Set(
@@ -37,13 +38,13 @@ if (portReg.test(option)) {
   pidList.push(option.replace(pidReg, ""));
 }
 
-const taskStr = await $$`tasklist`;
+const taskStr = await $.toString2`tasklist`;
 const tasks = taskStr.split(/[\r\n]+/);
 const taskMap = tasks.reduce((r, line) => {
   const temp = line.trim().split(/\s{4,}/);
 
   const pid = (temp[1] ?? "").trim().replace(/[^\d]+/, "");
-  r[pid] = [temp[0], temp[4] ?? ''];
+  r[pid] = [temp[0], temp[4] ?? ""];
   return r;
 }, {});
 
